@@ -6,11 +6,13 @@ public class Account {
 
     private String id;
 
-    private Long organizationId;
+    private String organizationId;
     
     private String name;
     
-    private String description;
+    private String mail;
+    
+    private String accessToken;
 
     private String roleId;
     
@@ -18,13 +20,18 @@ public class Account {
     	
     }
 
-	public Account(Long organizationId, String name, String description, String roleId) {
+    
+    
+	public Account(String organizationId, String name, String mail, String accessToken, String roleId) {
 		super();
 		this.organizationId = organizationId;
 		this.name = name;
-		this.description = description;
+		this.mail = mail;
+		this.accessToken = accessToken;
 		this.roleId = roleId;
 	}
+
+
 
 	public String getId() {
 		return id;
@@ -34,11 +41,11 @@ public class Account {
 		this.id = id;
 	}
 
-	public Long getOrganizationId() {
+	public String getOrganizationId() {
 		return organizationId;
 	}
 
-	public void setOrganizationId(Long organizationId) {
+	public void setOrganizationId(String organizationId) {
 		this.organizationId = organizationId;
 	}
 
@@ -50,12 +57,20 @@ public class Account {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public String getRoleId() {

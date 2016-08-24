@@ -4,14 +4,15 @@ import org.springframework.data.annotation.Id;
 
 public class AccountRes {
 
-    @Id
     private String id;
 
-    private Long organizationId;
+    private String organizationId;
     
     private String name;
     
-    private String description;
+    private String mail;
+    
+    private String accessToken;
 
     private String roleId;
     
@@ -23,6 +24,8 @@ public class AccountRes {
     	accountRes.setId(account.getId());
     	accountRes.setOrganizationId(account.getOrganizationId());
     	accountRes.setName(account.getName());
+    	accountRes.setMail(account.getMail());
+    	accountRes.setAccessToken(account.getAccessToken());
     	accountRes.setRoleId(account.getRoleId());
     	
     	return accountRes;
@@ -42,11 +45,11 @@ public class AccountRes {
 		this.id = id;
 	}
 
-	public Long getOrganizationId() {
+	public String getOrganizationId() {
 		return organizationId;
 	}
 
-	public void setOrganizationId(Long organizationId) {
+	public void setOrganizationId(String organizationId) {
 		this.organizationId = organizationId;
 	}
 
@@ -58,12 +61,20 @@ public class AccountRes {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public String getRoleId() {
