@@ -18,7 +18,6 @@ import com.hpe.devops.api.account.otherapi.roleservice.Role;
 import com.hpe.devops.api.account.otherapi.roleservice.RoleService;
 
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/accounts", produces = { "application/json" })
 public class AccountController {
 
@@ -83,7 +82,7 @@ public class AccountController {
 	
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<AccountRes> addRole(@RequestBody Account account) throws Exception {
+	public ResponseEntity<AccountRes> addAccount(@RequestBody Account account) throws Exception {
 	
 		account.setId(UUID.randomUUID().toString());
 		
@@ -97,7 +96,7 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public ResponseEntity<AccountRes> updateRole(@RequestBody Account account) throws Exception {
+	public ResponseEntity<AccountRes> updateAccount(@RequestBody Account account) throws Exception {
 		
 		account = accountRepo.save(account);
 		
@@ -109,10 +108,12 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> deleteRole(@PathVariable String id) throws Exception {
+	public ResponseEntity<AccountRes> deleteAccount(@PathVariable String id) throws Exception {
 
+		AccountRes res = this.getAccountById(id);
+		
 		accountRepo.delete(id);
 		
-		return new ResponseEntity<String>("Deleted", HttpStatus.OK);
+		return new ResponseEntity<AccountRes>(res, HttpStatus.OK);
 	}
 }
