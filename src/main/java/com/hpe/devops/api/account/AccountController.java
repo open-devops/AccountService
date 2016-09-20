@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,13 @@ import com.hpe.devops.api.account.otherapi.roleservice.RoleService;
 
 @RestController
 @RequestMapping(value = "/accounts", produces = { "application/json" })
+@RefreshScope
 public class AccountController {
 
+	
+	@Value("${account-service.hello-world}")
+	private String hello;
+	
 	
 	@Autowired
 	private AccountRepository accountRepo;
@@ -30,6 +36,8 @@ public class AccountController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public List<AccountRes> getAllAccounts() throws Exception {
+		
+		System.out.println(hello);
 		
 		List<Account> accountList = accountRepo.findAll();
 		
